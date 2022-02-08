@@ -64,3 +64,5 @@ C:\Users\w.alqawasmi\source\repos\JWTAUTH\JWTAUTH\obj\Debug\net5.0\JWTAUTH.dll
 C:\Users\w.alqawasmi\source\repos\JWTAUTH\JWTAUTH\obj\Debug\net5.0\ref\JWTAUTH.dll
 C:\Users\w.alqawasmi\source\repos\JWTAUTH\JWTAUTH\obj\Debug\net5.0\JWTAUTH.pdb
 C:\Users\w.alqawasmi\source\repos\JWTAUTH\JWTAUTH\obj\Debug\net5.0\JWTAUTH.genruntimeconfig.cache
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\JWTAUTH\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\JWTAUTH\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll

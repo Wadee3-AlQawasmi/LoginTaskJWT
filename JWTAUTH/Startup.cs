@@ -4,6 +4,7 @@ using JWTAUTH.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +42,14 @@ namespace JWTAUTH
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IRegisterService, RegisterService>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IClassUserService, ClassUserService>();
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
             services.AddAuthentication(x =>
             {
@@ -50,8 +59,17 @@ namespace JWTAUTH
             {
                 x.RequireHttpsMetadata = true;
                 x.SaveToken = true;
+
             });
 
+            services.Configure<IdentityOptions>(option =>
+            {
+                option.Password.RequiredLength = 5;
+                option.Password.RequireDigit = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireLowercase = false;
+            });
             services.AddCors(opt =>
             {
                 opt.AddPolicy(_loginOrigin, builder =>

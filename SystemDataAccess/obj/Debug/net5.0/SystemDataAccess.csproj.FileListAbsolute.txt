@@ -1,0 +1,12 @@
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\bin\Debug\net5.0\SystemDataAccess.deps.json
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\bin\Debug\net5.0\SystemDataAccess.dll
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\bin\Debug\net5.0\ref\SystemDataAccess.dll
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\bin\Debug\net5.0\SystemDataAccess.pdb
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\SystemDataAccess.csproj.AssemblyReference.cache
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\SystemDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\SystemDataAccess.AssemblyInfoInputs.cache
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\SystemDataAccess.AssemblyInfo.cs
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\SystemDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\SystemDataAccess.dll
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\ref\SystemDataAccess.dll
+C:\Users\w.alqawasmi\source\repos\JWTAUTH\SystemDataAccess\obj\Debug\net5.0\SystemDataAccess.pdb

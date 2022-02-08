@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JWTAUTH.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220119073328_initV2")]
-    partial class initV2
+    [Migration("20220201072408_init13")]
+    partial class init13
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.9")
+                .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("JWTAUTH.IdentityAuth.ApplicationUser", b =>
@@ -73,6 +73,9 @@ namespace JWTAUTH.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("fullname")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -84,6 +87,64 @@ namespace JWTAUTH.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("JWTAUTH.Models.ClassUsers", b =>
+                {
+                    b.Property<int>("Class_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User_ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Class_ID", "User_ID");
+
+                    b.HasIndex("User_ID");
+
+                    b.ToTable("classUsers");
+                });
+
+            modelBuilder.Entity("JWTAUTH.Models.Classes", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Course_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EndDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("Course_id");
+
+                    b.ToTable("classes");
+                });
+
+            modelBuilder.Entity("JWTAUTH.Models.Course", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CourseCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("course");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -215,6 +276,36 @@ namespace JWTAUTH.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("JWTAUTH.Models.ClassUsers", b =>
+                {
+                    b.HasOne("JWTAUTH.Models.Classes", "Class")
+                        .WithMany()
+                        .HasForeignKey("Class_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JWTAUTH.IdentityAuth.ApplicationUser", "user")
+                        .WithMany()
+                        .HasForeignKey("User_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("JWTAUTH.Models.Classes", b =>
+                {
+                    b.HasOne("JWTAUTH.Models.Course", "course")
+                        .WithMany()
+                        .HasForeignKey("Course_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("course");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

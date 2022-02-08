@@ -11,7 +11,7 @@ namespace JWTAUTH.Models
         [Required]
         public string username { get; set; }
 
-        [Required(ErrorMessage ="Password Is Required")]
+        [Required]
         public string password { get; set; }
     }
 }

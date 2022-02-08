@@ -23,6 +23,7 @@ namespace JWTAUTH.Models
         public string ConfirmPassword { set; get; }
         
         [Required]
+        [EmailAddress]
         public string Email { set; get; }
 
         [Required]

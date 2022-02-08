@@ -27,6 +27,7 @@ namespace JWTAUTH.Controllers
         {
             registerService = _registerService;
             configuration = _configuration;
+            
         }
 
         [HttpPost]
@@ -47,6 +48,7 @@ namespace JWTAUTH.Controllers
                     return Ok(new Response { Status = "Error1", Message = "user creation failed" });
                 }
                 return Ok(new Response { Status = "Success", Message = "User Created Successfully" });
+                
             }
         }
 
@@ -54,7 +56,6 @@ namespace JWTAUTH.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-
             var result = await registerService.Login(loginModel);
 
             if (result.Succeeded)
@@ -79,10 +80,41 @@ namespace JWTAUTH.Controllers
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
-
+                
             }
-            return Unauthorized();
+            return Ok(new Response { Status = "Error", Message = "user Name Or Password Faild" });
         }
 
+        [HttpGet]
+        [Route("Load")]
+        public IList<ApplicationUser> Load()
+        {
+            var result = registerService.Load();
+            return result;
+        }
+
+        [HttpGet]
+        [Route("Edit")]
+        public Task<ApplicationUser> Edit(string username)
+        {
+            var user =  registerService.FindByUsername(username);
+            return user;
+        }
+        
+        [HttpGet]
+        [Route("Delete")]
+        public void Delete(string username)
+        {
+            registerService.DeleteUser(username);
+        }
+
+
+        [HttpPost]
+        [Route("Update")]
+        public void Update(RegisterModel registerModel)
+        {
+            registerService.Update(registerModel);
+        }
+        
     }
 }
